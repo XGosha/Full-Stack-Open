@@ -8,7 +8,7 @@ sequenceDiagram
 
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note with payload [note: qq]
     activate server
-    Note right of server: The server adds new note to the notes
+    Note left of server: The server adds new note to the notes
     server-->>browser: redirects to /exampleapp/notes
     deactivate server
     browser: The browser pr0cess dedirect ordered by the server
