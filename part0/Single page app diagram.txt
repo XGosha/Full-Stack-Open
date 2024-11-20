@@ -2,14 +2,26 @@ sequenceDiagram
     participant operator
     participant browser
     participant server
-
-    operator->>browser: enters text 'qq'to the field 
-    operator->>browser: click "Save" button
-
-    Note right of browser: The browser adds new note to the notes
-    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa with payload {content: "qq", date: "2024-11-20T21:22:21.597Z"}
+    
+    browser->>server: https://studies.cs.helsinki.fi/exampleapp/spa
     activate server
-    Note left of server: The server adds new note to the notes
-    server-->>browser: response with {"message": "note created"}
+    server-->>browser:  HTML document
     deactivate server
     
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate server
+    server-->>browser: the CSS file
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+    activate server
+    server-->>browser: the JavaScript file
+    deactivate server
+    
+    browser: starts executing the JavaScript code that fetches the JSON from the server
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server-->>browser: JSON data [{content: "despacito", date: "2024-11-20T19:38:57.976Z"},…]
+    deactivate server
+    
+    browser: executes the callback function that renders the notes
