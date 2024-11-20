@@ -10,6 +10,4 @@ sequenceDiagram
     activate server
     Note left of server: The server adds new note to the notes
     server-->>browser: redirects to /exampleapp/notes
-    deactivate server
-    browser: The browser pr0cess dedirect ordered by the server
         (sequence of actions is described on diagram of "0.4: New note diagram" https://fullstackopen.com/en/part0/fundamentals_of_web_apps#exercises-0-1-0-6)
